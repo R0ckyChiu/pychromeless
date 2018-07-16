@@ -56,7 +56,10 @@ class WebDriverWrapper:
     def click(self, xpath):
         elem_click = self._driver.find_element_by_xpath(xpath)
         elem_click.click()
-
+        
+    def click_byName(self, name):
+        self._driver.find_element_by_name("commit").click()
+        
     def get_inner_html(self, xpath):
         elem_value = self._driver.find_element_by_xpath(xpath)
         return elem_value.get_attribute('innerHTML')
