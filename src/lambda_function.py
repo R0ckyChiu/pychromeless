@@ -6,20 +6,15 @@ from webdriver_wrapper import WebDriverWrapper
 def lambda_handler(*args, **kwargs):
     driver = WebDriverWrapper()
 
-    driver.get_url('https://www.google.es/')
+    driver.get_url('https://www.backerkit.com/admins/sign_in')
 
-    driver.set_input_value('//input[@id="lst-ib"]', '21 buttons')
+    driver.set_input_value_byName('admin[email]', 'YOUR_EMAIL')
+    driver.set_input_value_byName('admin[password]', 'YOUR_PASSWORD')
 
-    driver.click('//center//img[@alt="Google"]')
-    time.sleep(0.5)
-
-    driver.click('//input[@name="btnK"]')
-    time.sleep(0.5)
-
-    first_google_result_title = driver.get_inner_html('(//div[@class="rc"]//a)[1]')
-
-    print("--------------------------")
-    print(first_google_result_title)
-    print("--------------------------")
-
+    driver.click_byName('commit')
+    
+    driver.get_url('URL_OF_EXPORT_PAGE_OF_DESIRED_SEGMENT')
+    
+    driver.set_input_value('XPATH_OF_FILE', '\n')
+    
     driver.close()
